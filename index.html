@@ -1,1 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linthub.dev | Premium Script Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        /* CSS Variables */
+        :root {
+            --obsidian: #050505;
+            --obsidian-light: #121212;
+            --forest-green: #1a4325;
+            --emerald-muted: #2e8b57;
+            --text-main: #e0e0e0;
+            --text-muted: #9ca3af;
+            --glass-bg: rgba(15, 20, 17, 0.55);
+            --glass-border: rgba(46, 139, 87, 0.25);
+            --glass-hover: rgba(46, 139, 87, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--obsidian);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Animated Waterfall/Nature Background */
+        .bg-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -2;
+            /* Animated CSS gradient mimicking a flowing forest waterfall */
+            background: linear-gradient(180deg, var(--obsidian), var(--forest-green), var(--obsidian));
+            background-size: 100% 300%;
+            animation: waterfallFlow 15s ease infinite;
+        }
+
+        /* Optional image overlay for actual nature/waterfall GIF/MP4 */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            /* Replace the URL below with an actual image/gif if desired */
+            background: url('YOUR_BACKGROUND_IMAGE_URL_HERE') center/cover no-repeat;
+            opacity: 0.3; /* Dark overlay to keep text contrast */
+            background-color: rgba(5, 5, 5, 0.85); /* Obsidian tint */
+            background-blend-mode: overlay;
+        }
+
+        @keyframes waterfallFlow {
+            0% { background-position: 50% 0%; }
+            50% { background-position: 50% 100%; }
+            100% { background-position: 50% 0%; }
+        }
+
+        /* Container & Navigation */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #ffffff, var(--emerald-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: rgba(46, 139, 87, 0.2);
+            border-color: var(--glass-hover);
+            box-shadow: 0 0 15px rgba(46, 139, 87, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Areas */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--glass-hover);
+            box-shadow: 0 8px 32px 0 rgba(46, 139, 87, 0.15);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-img-container {
+            width: 100%;
+            height: 180px;
+            background: var(--obsidian-light);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed var(--glass-border);
+        }
+
+        .feature-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* How to Use Section */
+        .code-container {
+            background: #0a0f0c;
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        code {
+            font-family: monospace;
+            color: #a7f3d0;
+            word-break: break-all;
+            font-size: 0.95rem;
+        }
+
+        .copy-btn {
+            background: var(--emerald-muted);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #256a42;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .price-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .price-card h2 {
+            font-size: 2.5rem;
+            color: var(--emerald-muted);
+        }
+
+        .price-card ul {
+            list-style: none;
+            color: var(--text-muted);
+            margin: 1rem 0;
+        }
+
+        .price-card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .buy-btn {
+            margin-top: auto;
+            background: transparent;
+            border: 1px solid var(--emerald-muted);
+            color: var(--text-main);
+            padding: 0.75rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: var(--emerald-muted);
+        }
+
+        /* Socials Section */
+        .socials-flex {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            text-decoration: none;
+            color: var(--text-main);
+            width: 200px;
+            text-align: center;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Backgrounds -->
+    <div class="bg-layer"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <header>
+            <h1>Linthub.dev</h1>
+            <div class="nav-tabs">
+                <button class="tab-btn active" onclick="openTab('features')">Features</button>
+                <button class="tab-btn" onclick="openTab('how-to')">How to Use</button>
+                <button class="tab-btn" onclick="openTab('pricing')">Pricing</button>
+                <button class="tab-btn" onclick="openTab('socials')">Socials</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Features Tab -->
+            <section id="features" class="tab-content active">
+                <div class="features-grid">
+                    <div class="glass-card">
+                        <div class="feature-img-container">
+                            <!-- PASTE SCREENSHOT URL BELOW -->
+                            <img src="YOUR_IMAGE_URL_HERE" alt="UI Preview" onerror="this.style.display='none'">
+                        </div>
+                        <h3>Premium UI</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Smooth, responsive obsidian theme with cyber-green highlights designed for peak performance.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="feature-img-container">
+                            <!-- PASTE SCREENSHOT URL BELOW -->
+                            <img src="YOUR_IMAGE_URL_HERE" alt="Mechanics Preview" onerror="this.style.display='none'">
+                        </div>
+                        <h3>Advanced Mechanics</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Unmatched trajectory predictions, flawless reach, and bypasses to dominate the field.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="feature-img-container">
+                            <!-- PASTE SCREENSHOT URL BELOW -->
+                            <img src="YOUR_IMAGE_URL_HERE" alt="Optimization Preview" onerror="this.style.display='none'">
+                        </div>
+                        <h3>Highly Optimized</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Asynchronous inputs and non-blocking macro loops ensure you never drop frames.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Tab -->
+            <section id="how-to" class="tab-content">
+                <div class="glass-card">
+                    <h2 style="margin-bottom: 1rem;">Execution Script</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Paste the loadstring below into your executor of choice and inject.</p>
+                    
+                    <div class="code-container">
+                        <code id="scriptCode">loadstring(game:HttpGet("https://raw.githubusercontent.com/heianaye/thelastofus/refs/heads/main/hello.luau"))()</code>
+                        <button class="copy-btn" onclick="copyScript()">Copy Code</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Tab -->
+            <section id="pricing" class="tab-content">
+                <div class="pricing-grid">
+                    <div class="glass-card price-card">
+                        <h3>Free</h3>
+                        <h2>$0</h2>
+                        <ul>
+                            <li>Basic Hub Access</li>
+                            <li>Standard Updates</li>
+                            <li>Community Support</li>
+                        </ul>
+                        <button class="buy-btn">Get Free</button>
+                    </div>
+                    <div class="glass-card price-card" style="border-color: var(--emerald-muted);">
+                        <h3>Premium (Monthly)</h3>
+                        <h2>$5</h2>
+                        <ul>
+                            <li>Full Script Features</li>
+                            <li>Priority Bypass Updates</li>
+                            <li>Keyless Access</li>
+                        </ul>
+                        <button class="buy-btn" style="background: var(--emerald-muted); color: white;">Purchase</button>
+                    </div>
+                    <div class="glass-card price-card">
+                        <h3>Lifetime</h3>
+                        <h2>$20</h2>
+                        <ul>
+                            <li>All Premium Features</li>
+                            <li>Private Developer Build</li>
+                            <li>Dedicated Support Role</li>
+                        </ul>
+                        <button class="buy-btn">Purchase</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Socials Tab -->
+            <section id="socials" class="tab-content">
+                <div class="socials-flex">
+                    <a href="YOUR_DISCORD_LINK_HERE" class="social-link glass-card">
+                        <h3 style="color: #5865F2;">Discord</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Join the Community</p>
+                    </a>
+                    <a href="YOUR_YOUTUBE_LINK_HERE" class="social-link glass-card">
+                        <h3 style="color: #FF0000;">YouTube</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Watch Showcases</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- JavaScript for Tabs and Copy Button -->
+    <script>
+        // Tab switching logic
+        function openTab(tabId) {
+            // Hide all content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab & highlight button
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Copy to clipboard logic
+        function copyScript() {
+            const scriptText = document.getElementById("scriptCode").innerText;
+            const copyBtn = document.querySelector(".copy-btn");
+
+            navigator.clipboard.writeText(scriptText).then(() => {
+                copyBtn.innerText = "Copied!";
+                copyBtn.style.background = "#1a4325"; // Darker green success state
+                
+                setTimeout(() => {
+                    copyBtn.innerText = "Copy Code";
+                    copyBtn.style.background = "var(--emerald-muted)";
+                }, 2000);
+            }).catch(err => {
+                console.error("Failed to copy text: ", err);
+            });
+        }
+    </script>
+</body>
+</html>
 
