@@ -42,21 +42,18 @@
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
-            /* Animated CSS gradient mimicking a flowing forest waterfall */
             background: linear-gradient(180deg, var(--obsidian), var(--forest-green), var(--obsidian));
             background-size: 100% 300%;
             animation: waterfallFlow 15s ease infinite;
         }
 
-        /* Optional image overlay for actual nature/waterfall GIF/MP4 */
         .bg-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
-            /* Replace the URL below with an actual image/gif if desired */
             background: url('YOUR_BACKGROUND_IMAGE_URL_HERE') center/cover no-repeat;
-            opacity: 0.3; /* Dark overlay to keep text contrast */
-            background-color: rgba(5, 5, 5, 0.85); /* Obsidian tint */
+            opacity: 0.3;
+            background-color: rgba(5, 5, 5, 0.85);
             background-blend-mode: overlay;
         }
 
@@ -245,6 +242,7 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Updated Buy Button to work perfectly as an <a> tag */
         .buy-btn {
             margin-top: auto;
             background: transparent;
@@ -255,6 +253,9 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
         }
 
         .buy-btn:hover {
@@ -269,11 +270,11 @@
             flex-wrap: wrap;
         }
 
-        /* Custom Hover colors for Social Buttons */
         .btn-discord:hover {
             background: #5865F2 !important;
             border-color: #5865F2 !important;
         }
+        
         .btn-youtube:hover {
             background: #FF0000 !important;
             border-color: #FF0000 !important;
@@ -309,7 +310,6 @@
                 <div class="features-grid">
                     <div class="glass-card">
                         <div class="feature-img-container">
-                            <!-- PASTE SCREENSHOT URL BELOW -->
                             <img src="YOUR_IMAGE_URL_HERE" alt="UI Preview" onerror="this.style.display='none'">
                         </div>
                         <h3>Premium UI</h3>
@@ -317,7 +317,6 @@
                     </div>
                     <div class="glass-card">
                         <div class="feature-img-container">
-                            <!-- PASTE SCREENSHOT URL BELOW -->
                             <img src="YOUR_IMAGE_URL_HERE" alt="Mechanics Preview" onerror="this.style.display='none'">
                         </div>
                         <h3>Advanced Mechanics</h3>
@@ -325,7 +324,6 @@
                     </div>
                     <div class="glass-card">
                         <div class="feature-img-container">
-                            <!-- PASTE SCREENSHOT URL BELOW -->
                             <img src="YOUR_IMAGE_URL_HERE" alt="Optimization Preview" onerror="this.style.display='none'">
                         </div>
                         <h3>Highly Optimized</h3>
@@ -347,7 +345,7 @@
                 </div>
             </section>
 
-            <!-- Pricing Tab (UPDATED) -->
+            <!-- Pricing Tab (UPDATED TO CLICKABLE LINKS) -->
             <section id="pricing" class="tab-content">
                 <div class="pricing-grid">
                     <div class="glass-card price-card">
@@ -358,8 +356,10 @@
                             <li>Standard Updates</li>
                             <li>Community Support</li>
                         </ul>
-                        <p style="color: var(--emerald-muted); font-weight: 600; margin-top: auto;">Join the discord to purchase!</p>
+                        <!-- Discord Link styled as a Button -->
+                        <a href="https://discord.gg/MW9C2z5wjp" target="_blank" rel="noopener noreferrer" class="buy-btn">Join the discord!</a>
                     </div>
+                    
                     <div class="glass-card price-card" style="border-color: var(--emerald-muted);">
                         <h3>Premium (Monthly)</h3>
                         <h2>$5</h2>
@@ -368,8 +368,10 @@
                             <li>Priority Bypass Updates</li>
                             <li>Keyless Access</li>
                         </ul>
-                        <p style="color: var(--emerald-muted); font-weight: 600; margin-top: auto;">Join the discord to purchase!</p>
+                        <!-- Discord Link styled as the solid green Premium Button -->
+                        <a href="https://discord.gg/MW9C2z5wjp" target="_blank" rel="noopener noreferrer" class="buy-btn" style="background: var(--emerald-muted); color: white;">Join the discord to purchase!</a>
                     </div>
+                    
                     <div class="glass-card price-card">
                         <h3>Lifetime</h3>
                         <h2>$20</h2>
@@ -378,7 +380,8 @@
                             <li>Private Developer Build</li>
                             <li>Dedicated Support Role</li>
                         </ul>
-                        <p style="color: var(--emerald-muted); font-weight: 600; margin-top: auto;">Join the discord to purchase!</p>
+                        <!-- Discord Link styled as a Button -->
+                        <a href="https://discord.gg/MW9C2z5wjp" target="_blank" rel="noopener noreferrer" class="buy-btn">Join the discord to purchase!</a>
                     </div>
                 </div>
             </section>
@@ -389,14 +392,12 @@
                     <div class="glass-card price-card" style="width: 250px;">
                         <h3 style="color: #5865F2;">Discord</h3>
                         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Join the Community</p>
-                        <!-- Explicit link formatted as a button -->
-                        <a href="https://discord.gg/MW9C2z5wjp" target="_blank" rel="noopener noreferrer" class="buy-btn btn-discord" style="text-decoration: none; display: block; border-color: #5865F2;">Join Server</a>
+                        <a href="https://discord.gg/MW9C2z5wjp" target="_blank" rel="noopener noreferrer" class="buy-btn btn-discord" style="border-color: #5865F2;">Join Server</a>
                     </div>
                     <div class="glass-card price-card" style="width: 250px;">
                         <h3 style="color: #FF0000;">YouTube</h3>
                         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Watch Showcases</p>
-                        <!-- Explicit link formatted as a button -->
-                        <a href="https://m.youtube.com/watch?v=LVNxrhYy-fQ" target="_blank" rel="noopener noreferrer" class="buy-btn btn-youtube" style="text-decoration: none; display: block; border-color: #FF0000;">Watch Video</a>
+                        <a href="https://m.youtube.com/watch?v=LVNxrhYy-fQ" target="_blank" rel="noopener noreferrer" class="buy-btn btn-youtube" style="border-color: #FF0000;">Watch Video</a>
                     </div>
                 </div>
             </section>
@@ -405,29 +406,24 @@
 
     <!-- JavaScript for Tabs and Copy Button -->
     <script>
-        // Tab switching logic
         function openTab(tabId) {
-            // Hide all content
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Remove active class from all buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Show selected tab & highlight button
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
 
-        // Copy to clipboard logic
         function copyScript() {
             const scriptText = document.getElementById("scriptCode").innerText;
             const copyBtn = document.querySelector(".copy-btn");
 
             navigator.clipboard.writeText(scriptText).then(() => {
                 copyBtn.innerText = "Copied!";
-                copyBtn.style.background = "#1a4325"; // Darker green success state
+                copyBtn.style.background = "#1a4325"; 
                 
                 setTimeout(() => {
                     copyBtn.innerText = "Copy Code";
