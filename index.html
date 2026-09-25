@@ -155,21 +155,23 @@
 
         .feature-img-container {
             width: 100%;
-            height: 180px;
-            background: var(--obsidian-light);
+            height: 220px; /* Increased height for full visibility */
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 12px;
             margin-bottom: 1rem;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px dashed var(--glass-border);
+            border: 1px solid var(--glass-border);
+            padding: 8px;
         }
 
         .feature-img-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Prevents cropping, shows full picture */
+            border-radius: 6px;
         }
 
         /* How to Use Section */
@@ -309,7 +311,7 @@
                 <div class="features-grid">
                     <div class="glass-card">
                         <div class="feature-img-container">
-                            <!-- UI Image -->
+                            <!-- UI Image (untitled gui screenshot) -->
                             <img src="IMG_4607.jpeg" alt="UI Preview" onerror="this.style.display='none'">
                         </div>
                         <h3>UI</h3>
@@ -317,16 +319,16 @@
                     </div>
                     <div class="glass-card">
                         <div class="feature-img-container">
-                            <!-- QB Aimbot Image -->
-                            <img src="IMG_4608.jpeg" alt="Mechanics Preview" onerror="this.style.display='none'">
+                            <!-- QB Aimbot Image (Arc screenshot) -->
+                            <img src="IMG_4608.jpeg" alt="Qb Aimbot Preview" onerror="this.style.display='none'">
                         </div>
                         <h3>Qb Aimbot</h3>
                         <p style="color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5;">unbeatable qb aimbot, made with 3d mathing using vectors</p>
                     </div>
                     <div class="glass-card">
                         <div class="feature-img-container">
-                            <!-- Auto ST Image -->
-                            <img src="IMG_4609.jpeg" alt="Optimization Preview" onerror="this.style.display='none'">
+                            <!-- Auto ST Image (AUTO ST screenshot) -->
+                            <img src="IMG_4609.jpeg" alt="Auto Sidetech Preview" onerror="this.style.display='none'">
                         </div>
                         <h3>Auto Sidetech</h3>
                         <p style="color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5;">Precise math calculations turning ur body perfectly parallel to the ball at a 90 degree angle to enhance your catchbox range and mag the ball from greater lengths</p>
@@ -358,7 +360,6 @@
                             <li>Standard Updates</li>
                             <li>Community Support</li>
                         </ul>
-                        <!-- Discord Link styled as a Button -->
                         <a href="https://discord.gg/MW9C2z5wjp" target="_blank" rel="noopener noreferrer" class="buy-btn">Join the discord!</a>
                     </div>
                     
@@ -370,7 +371,6 @@
                             <li>Priority Bypass Updates</li>
                             <li>Keyless Access</li>
                         </ul>
-                        <!-- Discord Link styled as the solid green Premium Button -->
                         <a href="https://discord.gg/MW9C2z5wjp" target="_blank" rel="noopener noreferrer" class="buy-btn" style="background: var(--emerald-muted); color: white;">Join the discord to purchase!</a>
                     </div>
                     
@@ -382,7 +382,6 @@
                             <li>Private Developer Build</li>
                             <li>Dedicated Support Role</li>
                         </ul>
-                        <!-- Discord Link styled as a Button -->
                         <a href="https://discord.gg/MW9C2z5wjp" target="_blank" rel="noopener noreferrer" class="buy-btn">Join the discord to purchase!</a>
                     </div>
                 </div>
